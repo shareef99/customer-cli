@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise;
 
 // Connect to mongoose and set connection variable
 const db = mongoose.connect("mongodb://localhost:27017/customerDB", {
-    useNewUrlParser: true,
+    useMongoClient: true,
 });
 
 // Import customer model

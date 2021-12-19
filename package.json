@@ -12,6 +12,6 @@
   "dependencies": {
     "commander": "^8.3.0",
     "inquirer": "^8.2.0",
-    "mongoose": "^6.1.2"
+    "mongoose": "^4.13.21"
   }
 }

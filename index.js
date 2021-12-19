@@ -38,8 +38,48 @@ const findCustomer = (name) => {
         });
 };
 
+// Update Customer Info
+const updateCustomer = (_id, customer) => {
+    Customer.update({ _id }, customer)
+        .then((customer) => {
+            console.log("Customer updated: ", customer);
+            db.close();
+        })
+        .catch((err) => {
+            console.log("Error: ", err);
+        });
+};
+
+// Remove Customer
+const removeCustomer = (_id) => {
+    Customer.remove({ _id })
+        .then((customer) => {
+            console.log("Customer removed: ", customer);
+            db.close();
+        })
+        .catch((err) => {
+            console.log("Error: ", err);
+        });
+};
+
+// List all customers
+const listCustomers = () => {
+    Customer.find()
+        .then((customers) => {
+            console.log("Customers: ");
+            console.log(customers);
+            db.close();
+        })
+        .catch((err) => {
+            console.log("Error: ", err);
+        });
+};
+
 // Export all methods
 module.exports = {
     addCustomer,
     findCustomer,
+    updateCustomer,
+    removeCustomer,
+    listCustomers,
 };

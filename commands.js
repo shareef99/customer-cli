@@ -1,5 +1,11 @@
 const program = require("commander");
-const { addCustomer, findCustomer } = require("./index");
+const {
+    addCustomer,
+    findCustomer,
+    listCustomers,
+    removeCustomer,
+    updateCustomer,
+} = require("./index");
 const { prompt } = require("inquirer");
 
 // Questions
@@ -50,6 +56,33 @@ program
     .description("Find a customer")
     .action((name) => {
         findCustomer(name);
+    });
+
+// Update command
+program
+    .command("update <_id>")
+    .alias("u")
+    .description("Update a customer")
+    .action((_id) => {
+        prompt(questions).then((answers) => updateCustomer(_id, answers));
+    });
+
+// Remove command
+program
+    .command("remove <_id>")
+    .alias("r")
+    .description("Remove a customer")
+    .action((_id) => {
+        removeCustomer(_id);
+    });
+
+// List command
+program
+    .command("list")
+    .alias("l")
+    .description("List all customers")
+    .action(() => {
+        listCustomers();
     });
 
 program.parse(process.argv);
